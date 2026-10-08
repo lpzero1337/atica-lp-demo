@@ -37,10 +37,10 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1.5rem 4rem;
+      padding: 1.5rem 2.5rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       background: rgba(20, 22, 20, 0.4);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -49,7 +49,9 @@
     }
 
     nav .nav-logo {
-      height: 44px;
+      position: absolute;
+      left: 2.5rem;
+      height: 32px;
       width: auto;
       filter: brightness(0) invert(1);
       opacity: 1;
@@ -108,10 +110,17 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1250px;
       margin: 0 auto;
-      padding: 0 4rem;
-      margin-top: 4rem;
+      padding: 0 2.5rem;
+      margin-top: 5rem;
+    }
+
+    .hero-logo-large {
+      height: 72px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 2rem;
     }
 
     .hero-tag {
@@ -127,44 +136,50 @@
 
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(3.5rem, 7vw, 6rem);
-      font-weight: 300;
+      font-size: clamp(4rem, 8vw, 7rem);
+      font-weight: 400;
       color: #fff;
-      line-height: 1.05;
+      line-height: 1.02;
       letter-spacing: -.02em;
       margin-bottom: 1.5rem;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.4);
     }
     
     .hero-title em {
       font-style: italic;
       color: var(--marfim-q);
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     .hero-sub {
       font-family: var(--sans);
       font-size: clamp(1rem, 1.5vw, 1.15rem);
       font-weight: 300;
-      color: rgba(255,255,255,.8);
+      color: rgba(255,255,255,.9);
       line-height: 1.6;
-      letter-spacing: .03em;
+      letter-spacing: .02em;
       margin-bottom: 3.5rem;
-      max-width: 45ch;
+      max-width: 48ch;
+    }
+    
+    .hero-ctas {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .btn-primary {
       display: inline-flex;
       align-items: center;
-      gap: 1rem;
+      justify-content: center;
       padding: 1.1rem 3.2rem;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: #fff;
+      background: var(--verde);
+      border: 1px solid var(--verde);
+      color: var(--grafite);
       font-family: var(--sans);
       font-size: .8rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: .25em;
       text-transform: uppercase;
       text-decoration: none;
@@ -172,11 +187,35 @@
     }
 
     .btn-primary:hover {
-      background: var(--verde);
-      border-color: var(--verde);
-      color: var(--grafite);
+      background: #b5c752;
+      border-color: #b5c752;
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px -10px rgba(169, 184, 74, 0.4);
+      box-shadow: 0 10px 30px -10px rgba(169, 184, 74, 0.6);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.1rem 3.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all .4s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-3px);
     }
 
     /* ── SOBRE ───────────────────────────────────────────── */
@@ -450,10 +489,14 @@
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
+      <img src="public/logo.png" alt="Áticas" class="hero-logo-large" />
       <span class="hero-tag">Alto Padrão</span>
       <h1 class="hero-title">Arquitetura que<br /><em>transcende</em> o morar.</h1>
       <p class="hero-sub">Uma curadoria exclusiva de residências. Encontre o equilíbrio perfeito entre design autoral, natureza e sofisticação em endereços singulares.</p>
-      <a href="#sobre" class="btn-primary">Explorar a Coleção</a>
+      <div class="hero-ctas">
+        <a href="#visual" class="btn-primary">Explorar a Coleção</a>
+        <a href="#sobre" class="btn-secondary">Conhecer a Áticas</a>
+      </div>
     </div>
   </section>
 
