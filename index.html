@@ -37,38 +37,53 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 2rem 3rem;
+      padding: 1.5rem 4rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(32,35,33,.55) 0%, transparent 100%);
+      background: rgba(20, 22, 20, 0.4);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s ease;
     }
 
     nav .nav-logo {
-      height: 32px;
+      height: 44px;
       width: auto;
       filter: brightness(0) invert(1);
-      opacity: .92;
+      opacity: 1;
     }
 
-    nav .nav-tag {
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.9);
       font-family: var(--sans);
-      font-size: .68rem;
+      font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: .2em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--verde);
     }
 
     /* ── HERO ────────────────────────────────────────────── */
     #hero {
       position: relative;
       height: 100svh;
-      min-height: 600px;
+      min-height: 700px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
+      align-items: flex-start;
+      justify-content: center;
       overflow: hidden;
     }
 
@@ -86,66 +101,82 @@
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to top,  rgba(20,22,20,.82) 0%, rgba(20,22,20,.1) 55%),
-        linear-gradient(to right, rgba(20,22,20,.3) 0%, transparent 60%);
+      background: linear-gradient(90deg, rgba(20,22,20,0.95) 0%, rgba(20,22,20,0.6) 40%, transparent 100%);
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 1100px;
-      padding: 0 3rem 7rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      margin-top: 4rem;
     }
 
-    .hero-logo {
+    .hero-tag {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--verde);
+      margin-bottom: 1.5rem;
       display: block;
-      height: 52px;
-      width: auto;
-      margin-bottom: 2.4rem;
-      filter: brightness(0) invert(1);
-      opacity: .95;
     }
 
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-size: clamp(3.5rem, 7vw, 6rem);
       font-weight: 300;
       color: #fff;
-      line-height: 1.08;
-      letter-spacing: -.01em;
-      margin-bottom: 1.2rem;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-title em {
+      font-style: italic;
+      color: var(--marfim-q);
+      opacity: 0.85;
     }
 
     .hero-sub {
       font-family: var(--sans);
-      font-size: clamp(.9rem, 1.4vw, 1.05rem);
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
       font-weight: 300;
-      color: rgba(255,255,255,.68);
-      letter-spacing: .06em;
-      margin-bottom: 3rem;
-      max-width: 38ch;
+      color: rgba(255,255,255,.8);
+      line-height: 1.6;
+      letter-spacing: .03em;
+      margin-bottom: 3.5rem;
+      max-width: 45ch;
     }
 
     .btn-primary {
-      display: inline-block;
-      padding: .85rem 2.6rem;
-      border: 1px solid rgba(255,255,255,.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 3.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       color: #fff;
       font-family: var(--sans);
-      font-size: .78rem;
+      font-size: .8rem;
       font-weight: 500;
-      letter-spacing: .18em;
+      letter-spacing: .25em;
       text-transform: uppercase;
       text-decoration: none;
-      transition: background .3s, border-color .3s, color .3s;
+      transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .btn-primary:hover {
       background: var(--verde);
       border-color: var(--verde);
       color: var(--grafite);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px -10px rgba(169, 184, 74, 0.4);
     }
 
     /* ── SOBRE ───────────────────────────────────────────── */
@@ -375,11 +406,15 @@
 
     /* ── RESPONSIVO ──────────────────────────────────────── */
     @media (max-width: 768px) {
-      nav { padding: 1.5rem 1.5rem; }
-      nav .nav-tag { display: none; }
+      nav { padding: 1.2rem 1.5rem; }
+      nav .nav-logo { height: 36px; }
+      .nav-links { display: none; }
 
-      .hero-content { padding: 0 1.5rem 5rem; }
-      .hero-logo    { height: 38px; }
+      #hero { justify-content: flex-end; }
+      #hero::after {
+        background: linear-gradient(to top, rgba(20,22,20,0.95) 0%, rgba(20,22,20,0.5) 50%, transparent 100%);
+      }
+      .hero-content { padding: 0 1.5rem 5rem; margin-top: 0; }
 
       #sobre         { padding: 6rem 1.5rem; }
       .sobre-inner   { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -404,17 +439,21 @@
   <!-- NAV -->
   <nav>
     <img src="public/logo.png" alt="Áticas" class="nav-logo" />
-    <span class="nav-tag">Alto Padrão</span>
+    <div class="nav-links">
+      <a href="#sobre">A Marca</a>
+      <a href="#visual">Portfólio</a>
+      <a href="#contato">Contato</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <img src="public/logo.png" alt="Áticas" class="hero-logo" />
-      <h1 class="hero-title">Espaços com<br />identidade.</h1>
-      <p class="hero-sub">Imóveis que expressam quem você é, onde cada detalhe foi escolhido com intenção.</p>
-      <a href="#sobre" class="btn-primary">Conhecer a Áticas</a>
+      <span class="hero-tag">Alto Padrão</span>
+      <h1 class="hero-title">Arquitetura que<br /><em>transcende</em> o morar.</h1>
+      <p class="hero-sub">Uma curadoria exclusiva de residências. Encontre o equilíbrio perfeito entre design autoral, natureza e sofisticação em endereços singulares.</p>
+      <a href="#sobre" class="btn-primary">Explorar a Coleção</a>
     </div>
   </section>
 
