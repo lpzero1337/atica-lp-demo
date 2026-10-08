@@ -313,21 +313,65 @@
       line-height: 1.8;
     }
 
-    .visual-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 6rem 3rem;
-      align-items: start;
+    .visual-header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1.5rem;
+    }
+
+    .visual-nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .carousel-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+      transform: scale(1.05);
+    }
+
+    .visual-carousel {
+      display: flex;
+      gap: 2.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: 2rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    
+    .visual-carousel::-webkit-scrollbar {
+      display: none;
     }
 
     .vcard {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+      flex: 0 0 80vw;
+      scroll-snap-align: start;
     }
     
-    .vcard:nth-child(even) {
-      margin-top: 8rem;
+    @media (min-width: 768px) {
+      .vcard {
+        flex: 0 0 500px;
+      }
     }
 
     .vcard-img-wrap {
@@ -475,11 +519,7 @@
       #visual        { padding: 6rem 1.5rem; }
       .visual-header { flex-direction: column; align-items: flex-start; }
       .visual-caption { text-align: left; }
-      .visual-grid   {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-      }
-      .vcard:nth-child(even) { margin-top: 0; }
+      .visual-header-right { align-items: flex-start; }
 
       #contato       { padding: 6rem 1.5rem; }
 
@@ -545,9 +585,19 @@
     <div class="visual-inner">
       <div class="visual-header">
         <h2 class="visual-heading">Exclusividade<br /><em>em cada detalhe.</em></h2>
-        <p class="visual-caption">Projetos selecionados<br />Alto Padrão<br />Arquitetura Autoral</p>
+        <div class="visual-header-right">
+          <p class="visual-caption">Projetos selecionados<br />Alto Padrão</p>
+          <div class="visual-nav">
+            <button class="carousel-btn prev-btn" aria-label="Anterior" onclick="document.querySelector('.visual-carousel').scrollBy({left: -530, behavior: 'smooth'})">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel-btn next-btn" aria-label="Próximo" onclick="document.querySelector('.visual-carousel').scrollBy({left: 530, behavior: 'smooth'})">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="visual-grid">
+      <div class="visual-carousel">
         <div class="vcard">
           <div class="vcard-img-wrap">
             <img src="public/port1.png" alt="Projeto 01" />
